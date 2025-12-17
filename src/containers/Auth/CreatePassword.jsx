@@ -200,9 +200,9 @@ export const CreatePassword = () => {
   )
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="create_password_screen">
       {!isKeyboardVisible && (
-        <View style={styles.logoContainer}>
+        <View style={styles.logoContainer} testID="create_password_logo">
           <LogoTextWithLock width={170} height={50} />
         </View>
       )}
@@ -217,15 +217,16 @@ export const CreatePassword = () => {
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
         >
-          <View style={styles.formContainer}>
+          <View style={styles.formContainer} testID="create_password_form_container">
             <View style={styles.headerContainer}>
-              <Text style={styles.headerText}>{t`Create Master Password`}</Text>
+              <Text style={styles.headerText} testID="create_password_title">{t`Create Master Password`}</Text>
             </View>
             <Text
-              style={styles.boldText}
+              style={styles.boldText} testID="create_password_description"
             >{t`The first thing to do is create a Master password to secure your account.  You’ll use this password to access PearPass. `}</Text>
-            <View style={styles.inputContainer}>
+            <View style={styles.inputContainer} testID="create_password_inputs_container">
               <InputPasswordPearPass
+                testID="create_password_input"
                 placeholder={t`Enter Password`}
                 {...passwordRegisterProps}
                 onChange={handlePasswordChange}
@@ -233,56 +234,62 @@ export const CreatePassword = () => {
               />
 
               <InputPasswordPearPass
+                testID="create_password_confirm_input"
                 placeholder={t`Confirm Password`}
                 {...register('passwordConfirm')}
                 isPassword
               />
             </View>
 
-            <View style={styles.requirementsContainer}>
-              <Text style={styles.requirementsText}>
+            <View style={styles.requirementsContainer} testID="create_password_requirements_container">
+              <Text style={styles.requirementsText} testID="create_password_requirements_text">
                 {t`Your password must be at least 8 characters long and include at least one of each:`}
               </Text>
-              <View style={styles.bulletList}>
-                <Text style={styles.bulletItem}>
+              <View style={styles.bulletList} testID="create_password_requirements_list">
+                <Text style={styles.bulletItem} testID="create_password_requirement_uppercase">
                   {`${bulletUnicode} ${t`Uppercase Letter (A-Z)`}`}
                 </Text>
-                <Text style={styles.bulletItem}>
+                <Text style={styles.bulletItem} testID="create_password_requirement_lowercase">
                   {`${bulletUnicode} ${t`Lowercase Letter (a-z)`}`}
                 </Text>
-                <Text style={styles.bulletItem}>
+                <Text style={styles.bulletItem} testID="create_password_requirement_number">
                   {`${bulletUnicode} ${t`Number (0-9)`}`}
                 </Text>
-                <Text style={styles.bulletItem}>
+                <Text style={styles.bulletItem} testID="create_password_requirement_special">
                   {`${bulletUnicode} ${t`Special Character (! @ # $...)`}`}
                 </Text>
               </View>
-              <Text style={styles.noteText}>
+              <Text style={styles.noteText} testID="create_password_requirement_note">
                 {t`Note: Avoid common words and personal information.`}
               </Text>
             </View>
 
-            <View style={styles.termsContainer}>
-              <AppWarning
+            <View style={styles.termsContainer} testID="create_password_terms_container">
+              <AppWarning testID="create_password_warning"
                 warning={t`Don't forget your master password. It's the only way to access your vault. We can't help recover it. Back it up securely.`}
                 textStyles={{ flex: 0 }}
               />
-              <Text style={styles.termsTitle}>{t`PearPass Terms of Use`}</Text>
+              <Text style={styles.termsTitle} testID="create_password_terms_title">{t`PearPass Terms of Use`}</Text>
 
-              <View style={styles.checkboxContainer}>
-                <TouchableOpacity onPress={() => setAccepted(!accepted)}>
+              <View style={styles.checkboxContainer} testID="create_password_terms_checkbox_row">
+                <TouchableOpacity 
+                testID="create_password_terms_checkbox"
+                accessibilityLabel="create_password_terms_checkbox"
+                onPress={() => setAccepted(!accepted)}>
                   {accepted ? (
-                    <View style={styles.checkboxOuter}>
+                    <View style={styles.checkboxOuter} testID="create_password_terms_checkbox_checked">
                       <View style={styles.checkboxInner} />
                     </View>
                   ) : (
-                    <View style={styles.checkboxEmpty} />
+                    <View style={styles.checkboxEmpty} testID="create_password_terms_checkbox_unchecked" />
                   )}
                 </TouchableOpacity>
                 <View style={styles.textContainer}>
                   <Text style={styles.bottomText}>
                     {t`I have read and agree to the`}{' '}
-                    <Text style={styles.linkText} onPress={handleTermsPress}>
+                    <Text style={styles.linkText} onPress={handleTermsPress}
+                    testID="create_password_terms_link"
+                    accessibilityLabel="create_password_terms_link">
                       {t`PearPass Application Terms of Use`}
                     </Text>
                     .
@@ -290,14 +297,16 @@ export const CreatePassword = () => {
                 </View>
               </View>
             </View>
-            <View style={styles.buttonContainer}>
+            <View style={styles.buttonContainer} testID="create_password_actions_container">
               {isLoading ? (
                 <ActivityIndicator
+                  testID="create_password_loading"
                   size="small"
                   color={colors.primary400.mode1}
                 />
               ) : (
                 <ButtonPrimary
+                  testID="create_password_continue_button"
                   stretch
                   onPress={handleSubmit(onSubmit)}
                   disabled={!accepted}

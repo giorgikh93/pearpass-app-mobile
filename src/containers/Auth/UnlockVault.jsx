@@ -110,13 +110,12 @@ export const UnlockVault = ({ vaultId }) => {
           </Text>
 
           <View style={{ width: '100%' }}>
-            <View testID="unlock-vault-password-input">
               <InputPasswordPearPass
+                testID="unlock-vault-password-input"
                 placeholder={t`Vault password`}
                 {...register('password')}
                 isPassword
               />
-            </View>
           </View>
 
           <View style={{ width: '100%', gap: 10 }}>

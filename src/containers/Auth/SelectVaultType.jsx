@@ -89,14 +89,14 @@ export const SelectVaultType = () => {
       </View>
 
       <View style={styles.bottomSection}>
-        <View testID="select-vault-type-create-new">
-          <ButtonPrimary stretch onPress={handleCreateVault}>
+          <ButtonPrimary 
+            testID="select-vault-type-create-new"
+            stretch onPress={handleCreateVault}>
             {t`Create a new vault`}
           </ButtonPrimary>
-        </View>
 
-        <View testID="select-vault-type-load-existing">
           <ButtonSecondary
+            testID="select-vault-type-load-existing"
             stretch
             onPress={() => navigation.navigate('Welcome', { state: 'load' })}
           >

@@ -188,7 +188,7 @@ dependencies {
     // RecyclerView dependency for autofill extension
     implementation("androidx.recyclerview:recyclerview:1.3.2")
 
-    // AndroidX Autofill for Samsung keyboard compatibility (same as Bitwarden uses)
+    // AndroidX Autofill for Samsung keyboard compatibility
     implementation("androidx.autofill:autofill:1.3.0")
 
     // AndroidX Biometric for fingerprint/face authentication

@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from 'react'
 
 import { useLingui } from '@lingui/react/macro'
 import * as SecureStore from 'expo-secure-store'
-import { AUTO_LOCK_ENABLED } from 'pearpass-lib-constants'
 
 import { Container, Description } from './styles'
 import { CardSingleSetting } from '../../../components/CardSingleSetting'
@@ -130,7 +129,7 @@ export const PrivacySection = () => {
           selectedRules={selectedRules}
           setRules={handleSetRules}
         />
-        {AUTO_LOCK_ENABLED && <AutoLockSettings />}
+        <AutoLockSettings />
       </Container>
     </CardSingleSetting>
   )
